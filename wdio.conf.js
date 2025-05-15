@@ -1,3 +1,5 @@
+const path = require("path");
+
 exports.config = {
   //
   // ====================
@@ -52,7 +54,8 @@ exports.config = {
     {
       platformName: "Android",
       "appium:automationName": "UiAutomator2",
-      "appium:app": `${__dirname}/app/app.apk`,
+      "appium:app":
+        process.env.APP_PATH || path.join(process.cwd(), "app", "app.apk"),
       "appium:autoGrantPermissions": true,
     },
   ],

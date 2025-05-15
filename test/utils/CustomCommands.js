@@ -1,8 +1,9 @@
-const { browser } = require("@wdio/globals");
+const { $, driver } = require("@wdio/globals");
 const path = require("path");
+const { browser } = require("@wdio/globals");
 
-class BasePage {
-  generateEmail() {
+class CustomCommands {
+  async generateEmail() {
     const timestamp = new Date()
       .toISOString()
       .replace(/[-:.T]/g, "")
@@ -22,4 +23,4 @@ class BasePage {
   }
 }
 
-module.exports = BasePage;
+module.exports = new CustomCommands();
