@@ -26,6 +26,10 @@ class LoginPage extends BasePage {
     return $('//*[@resource-id="register_label"]');
   }
 
+  get errorLabel() {
+    return $('//*[@resource-id="error_label"]');
+  }
+
   async screenDisplayed() {
     await this.mainBannerLogo.waitForDisplayed();
     await expect(this.mainBannerScreenName).toBeDisplayed();

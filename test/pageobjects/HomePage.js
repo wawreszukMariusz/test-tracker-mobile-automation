@@ -10,25 +10,23 @@ const HomeScreenOptions = {
 
 class HomePage extends BasePage {
   get mainBannerLogo() {
-    return $('//android.view.View[@resource-id="main_banner_logo"]');
+    return $('//*[@resource-id="main_banner_logo"]');
   }
 
   get welcomeBannerPhoto() {
-    return $('//android.view.View[@resource-id="welcome_banner_photo"]');
+    return $('//*[@resource-id="welcome_banner_photo"]');
   }
 
   get welcomeBannerTitle() {
-    return $('//android.widget.TextView[@resource-id="welcome_banner_title"]');
+    return $('//*[@resource-id="welcome_banner_title"]');
   }
 
   get welcomeBannerSubtite() {
-    return $('//android.widget.TextView[@resource-id="welcome_banner_desc"]');
+    return $('//*[@resource-id="welcome_banner_desc"]');
   }
 
   singleOption(optionName) {
-    return $(
-      `//android.widget.TextView[@resource-id="option_box_title" and @text="${optionName}"]`
-    );
+    return $(`//*[@resource-id="option_box_title" and @text="${optionName}"]`);
   }
 
   async welcomeBannerDisplayed() {
