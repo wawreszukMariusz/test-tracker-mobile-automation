@@ -18,31 +18,31 @@ class ProjectPage extends BasePage {
     return $('//*[@resource-id="check_connection_text"]');
   }
 
+  get projectImage() {
+    return $$('//android.view.View[@content-desc="Project Image"]');
+  }
+
+  get projectName() {
+    return $$('//*[@resource-id="project_item_box"]/android.widget.TextView');
+  }
+
+  get projectEditButton() {
+    return $$('//*[@resource-id="project_item_update_button"]');
+  }
+
+  get projectBox() {
+    return $$('//*[@resource-id="project_item_box"]');
+  }
+
   get addProjectButton() {
     return $('//*[@resource-id="custom_button"]');
   }
 
-  get singleProjectImage() {
-    return $('//*[@resource-id="custom_button"]');
-  }
-
-  get singleProjectName() {
-    return $('//*[@resource-id="project_item_text"]');
-  }
-
-  get singleProjectEditIcon() {
-    return $('//*[@resource-id="project_item_update_button"]');
-  }
-
-  get singleProjectBox() {
-    return $('//*[@resource-id="project_item_box"]');
-  }
-
   async projectBoxDisplayed() {
-    await this.singleProjectImage.waitForDisplayed();
-    await expect(this.singleProjectName).toBeDisplayed();
-    await expect(this.singleProjectEditIcon).toBeDisplayed();
-    await expect(this.singleProjectBox).toBeDisplayed();
+    await this.projectImage[0].waitForDisplayed();
+    await expect(this.projectName[0]).toBeDisplayed();
+    await expect(this.projectEditButton[0]).toBeDisplayed();
+    await expect(this.projectBox[0]).toBeDisplayed();
   }
 
   async screenDisplayed() {

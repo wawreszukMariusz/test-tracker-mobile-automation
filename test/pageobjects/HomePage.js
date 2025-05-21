@@ -1,7 +1,7 @@
 const { $, expect } = require("@wdio/globals");
 const BasePage = require("./BasePage");
 
-const HomeScreenOptions = {
+export const HomeScreenOptions = {
   PROJECTS: "Projects",
   REPORTS: "Reports",
   TEST_EXECUTE: "Test Execute",
