@@ -64,7 +64,10 @@ describe("Register sequence", () => {
     await LoginPage.screenDisplayed();
 
     await CustomCommands.reinstallApp();
+    await LoginPage.screenDisplayed();
+
     await LoginPage.registerButton.click();
+
     await RegisterPage.register(email, "test123", "test");
     await RegisterPage.screenDisplayed();
   });

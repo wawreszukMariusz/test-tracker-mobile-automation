@@ -1,6 +1,7 @@
 const { $, driver } = require("@wdio/globals");
 const path = require("path");
 const { browser } = require("@wdio/globals");
+const fs = require("fs");
 
 class CustomCommands {
   async generateEmail() {
@@ -20,6 +21,13 @@ class CustomCommands {
     await driver.removeApp(appPackage);
     await driver.installApp(appPath);
     await driver.activateApp(appPackage);
+  }
+
+  async pushImageToEmulator(assetFilename, targetPath = "/sdcard/Download") {
+    const fullPath = path.resolve(__dirname, "../assets", assetFilename);
+    const base64 = fs.readFileSync(fullPath, { encoding: "base64" });
+
+    await driver.pushFile(`${targetPath}/${assetFilename}`, base64);
   }
 }
 
