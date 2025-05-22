@@ -13,6 +13,16 @@ class CustomCommands {
     return `tester${timestamp}@test.com`;
   }
 
+  async generateAccessCode(length = 8) {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let code = "";
+    for (let i = 0; i < length; i++) {
+      const idx = Math.floor(Math.random() * chars.length);
+      code += chars[idx];
+    }
+    return code;
+  }
+
   async reinstallApp() {
     const appPackage = "com.mw.testapp";
     const appPath =

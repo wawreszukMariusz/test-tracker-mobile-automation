@@ -17,5 +17,9 @@
     "@wdio/mocha-framework": "^9.2.8",
     "appium": "^2.12.1",
     "appium-uiautomator2-driver": "^3.8.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "supertest": "^7.1.1"
   }
 }

@@ -54,6 +54,7 @@ exports.config = {
     {
       platformName: "Android",
       "appium:automationName": "UiAutomator2",
+      "appium:enableMultiwindow": true,
       "appium:app":
         process.env.APP_PATH || path.join(process.cwd(), "app", "app.apk"),
       "appium:autoGrantPermissions": true,

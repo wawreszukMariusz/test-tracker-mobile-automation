@@ -6,17 +6,16 @@ const CustomCommands = require("../utils/CustomCommands");
 const AddProjectPage = require("../pageobjects/AddProjectPage");
 const ScenarioPage = require("../pageobjects/ScenarioPage");
 const AddScenarioPage = require("../pageobjects/AddScenarioPage");
+const ApiUtility = require("../utils/ApiUtility");
 
 describe("Scenario sequence", () => {
   beforeEach(async () => {
     const email = (await CustomCommands.generateEmail()).toString();
+    const accessCode = (await CustomCommands.generateAccessCode()).toString();
     const password = "test123";
 
-    await LoginPage.screenDisplayed();
-    await LoginPage.registerButton.click();
-
-    await RegisterPage.screenDisplayed();
-    await RegisterPage.register(email, password, "TestTracker");
+    await ApiUtility.register(email, password, "TestTracker", accessCode);
+    await ApiUtility.addProject("Test Api", accessCode);
 
     await LoginPage.screenDisplayed();
     await LoginPage.login(email, password);
@@ -24,16 +23,7 @@ describe("Scenario sequence", () => {
     await HomePage.screenDisplayed();
     await HomePage.singleOption("Projects").click();
 
-    await ProjectPage.screenDisplayedEmptyState();
-
-    await ProjectPage.addProjectButton.click();
-
-    await AddProjectPage.screenDisplayed();
-    await AddProjectPage.input.setValue("Test");
-    await AddProjectPage.addProjectButton.click();
-
     await ProjectPage.screenDisplayed();
-    await expect(ProjectPage.projectName[0]).toHaveText("Test");
     await ProjectPage.projectBox[0].click();
 
     await ScenarioPage.screenDisplayedEmptyState();
@@ -69,7 +59,7 @@ describe("Scenario sequence", () => {
     await ScenarioPage.screenDisplayed();
     await expect(ScenarioPage.scenarioName[0]).toHaveText("Test");
 
-    await ScenarioPage.addScenarioButton.click();
+    await ScenarioPage.scenarioEditButton[0].click();
 
     await AddScenarioPage.screenDisplayed();
     await AddScenarioPage.addScenarioButton.click();

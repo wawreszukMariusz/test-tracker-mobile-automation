@@ -5,6 +5,7 @@ const ProjectPage = require("../pageobjects/ProjectPage");
 const CustomCommands = require("../utils/CustomCommands");
 const AddProjectPage = require("../pageobjects/AddProjectPage");
 const GalleryPage = require("../pageobjects/GalleryPage");
+const ApiUtility = require("../utils/ApiUtility");
 
 describe("Project sequence", () => {
   before(async () => {
@@ -15,11 +16,7 @@ describe("Project sequence", () => {
     const email = (await CustomCommands.generateEmail()).toString();
     const password = "test123";
 
-    await LoginPage.screenDisplayed();
-    await LoginPage.registerButton.click();
-
-    await RegisterPage.screenDisplayed();
-    await RegisterPage.register(email, password, "TestTracker");
+    await ApiUtility.register(email, password, "TestTracker");
 
     await LoginPage.screenDisplayed();
     await LoginPage.login(email, password);
