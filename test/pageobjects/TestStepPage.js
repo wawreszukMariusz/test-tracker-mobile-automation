@@ -2,14 +2,6 @@ const { $ } = require("@wdio/globals");
 const BasePage = require("./BasePage");
 
 class TestCasePage extends BasePage {
-  get mainBannerLogo() {
-    return $('//*[@resource-id="main_banner_logo"]');
-  }
-
-  get mainBannerScreenName() {
-    return $('//*[@resource-id="main_banner_text"]');
-  }
-
   get noResultsFoundTitle() {
     return $('//*[@resource-id="no_results_found_text"]');
   }
@@ -72,16 +64,14 @@ class TestCasePage extends BasePage {
 
   async screenDisplayed() {
     await this.testStepDisplayed();
-    await expect(this.mainBannerLogo).toBeDisplayed();
-    await expect(this.mainBannerScreenName).toBeDisplayed();
+    await this.mainBannerDisplayed();
     await expect(this.addTestStepButton).toBeDisplayed();
   }
 
   async screenDisplayedEmptyState() {
     await this.noResultsFoundTitle.waitForDisplayed();
     await this.noResultsFoundSubtitle.waitForDisplayed();
-    await expect(this.mainBannerLogo).toBeDisplayed();
-    await expect(this.mainBannerScreenName).toBeDisplayed();
+    await this.mainBannerDisplayed();
     await expect(this.addTestStepButton).toBeDisplayed();
   }
 }

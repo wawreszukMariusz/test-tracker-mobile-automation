@@ -2,10 +2,6 @@ const { $ } = require("@wdio/globals");
 const BasePage = require("./BasePage");
 
 class AddTestStepPage extends BasePage {
-  get mainBannerLogo() {
-    return $('//*[@resource-id="main_banner_logo"]');
-  }
-
   get expectedLabel() {
     return $$('//*[@resource-id="expected_label"]');
   }
@@ -38,7 +34,7 @@ class AddTestStepPage extends BasePage {
   }
 
   async screenDisplayed(isUpdate = false) {
-    await this.mainBannerLogo.waitForDisplayed();
+    await this.mainBannerDisplayed();
     await this.testStepDisplayed(0);
     if (!isUpdate) {
       await expect(this.addMoreButton).toBeDisplayed();

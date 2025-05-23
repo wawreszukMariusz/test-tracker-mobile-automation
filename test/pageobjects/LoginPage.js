@@ -2,14 +2,6 @@ const { $, driver } = require("@wdio/globals");
 const BasePage = require("./BasePage");
 
 class LoginPage extends BasePage {
-  get mainBannerLogo() {
-    return $('//*[@resource-id="main_banner_logo"]');
-  }
-
-  get mainBannerScreenName() {
-    return $('//*[@resource-id="main_banner_text"]');
-  }
-
   get emailInput() {
     return $('//*[@resource-id="email_input"]');
   }
@@ -31,8 +23,7 @@ class LoginPage extends BasePage {
   }
 
   async screenDisplayed() {
-    await this.mainBannerLogo.waitForDisplayed();
-    await expect(this.mainBannerScreenName).toBeDisplayed();
+    await this.mainBannerDisplayed();
     await expect(this.emailInput).toBeDisplayed();
     await expect(this.passwordInput).toBeDisplayed();
     await expect(this.loginButton).toBeDisplayed();

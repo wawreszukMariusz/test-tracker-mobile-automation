@@ -2,10 +2,6 @@ const { $ } = require("@wdio/globals");
 const BasePage = require("./BasePage");
 
 class AddProjectPage extends BasePage {
-  get mainBannerLogo() {
-    return $('//*[@resource-id="main_banner_logo"]');
-  }
-
   get inputTitle() {
     return $('//*[@resource-id="input_title"]');
   }
@@ -27,7 +23,7 @@ class AddProjectPage extends BasePage {
   }
 
   async screenDisplayed() {
-    await this.mainBannerLogo.waitForDisplayed();
+    await this.mainBannerDisplayed();
     await this.photoPreview.waitForDisplayed();
     await expect(this.inputTitle).toBeDisplayed();
     await expect(this.input).toBeDisplayed();

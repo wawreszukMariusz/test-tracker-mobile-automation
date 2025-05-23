@@ -9,10 +9,6 @@ export const HomeScreenOptions = {
 };
 
 class HomePage extends BasePage {
-  get mainBannerLogo() {
-    return $('//*[@resource-id="main_banner_logo"]');
-  }
-
   get welcomeBannerPhoto() {
     return $('//*[@resource-id="welcome_banner_photo"]');
   }
@@ -36,7 +32,7 @@ class HomePage extends BasePage {
   }
 
   async screenDisplayed() {
-    await this.mainBannerLogo.waitForDisplayed();
+    await this.mainBannerDisplayed();
     await this.welcomeBannerDisplayed();
 
     await expect(this.singleOption(HomeScreenOptions.PROJECTS)).toBeDisplayed();
