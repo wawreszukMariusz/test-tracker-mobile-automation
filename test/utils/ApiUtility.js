@@ -40,19 +40,52 @@ class ApiUtility {
   }
 
   async addTestCase(name, scenarioId, isAutomated = false) {
-    return this.request
+    const response = await this.request
       .post("/testCases")
       .send({ name, scenarioId, isAutomated })
       .set("Accept", "application/json")
       .set("Content-Type", "application/json");
+
+    return response.body._id;
   }
 
-  async addTestSteps(steps) {
+  async addTestStep(testSteps) {
     return this.request
       .post("/testSteps")
-      .send(steps)
+      .send(testSteps)
       .set("Accept", "application/json")
       .set("Content-Type", "application/json");
+  }
+
+  async prepareTestStepsArray(testStepsNumber, accessCode, testCaseId) {
+    const testSteps = [];
+
+    for (let i = 0; i < testStepsNumber; i++) {
+      let singleTestStep = {
+        expected: `Expected ${i}`,
+        result: `Result ${i}`,
+        accessCode: accessCode,
+        testCaseId: testCaseId,
+      };
+
+      testSteps.push(singleTestStep);
+    }
+    console.log(testSteps);
+    return testSteps;
+  }
+
+  async prepareCompleteData(testStepsNumber, accessCode) {
+    const projectId = await this.addProject("Test", accessCode);
+    const scenarioId = await this.addScenario("Test", projectId, accessCode);
+    const testCaseId = await this.addTestCase("Test case", scenarioId);
+
+    const testSteps = await this.prepareTestStepsArray(
+      testStepsNumber,
+      accessCode,
+      testCaseId
+    );
+
+    await this.addTestStep(testSteps);
   }
 }
 
