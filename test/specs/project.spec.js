@@ -1,6 +1,5 @@
 const HomePage = require("../pageobjects/HomePage");
 const LoginPage = require("../pageobjects/LoginPage");
-const RegisterPage = require("../pageobjects/RegisterPage");
 const ProjectPage = require("../pageobjects/ProjectPage");
 const CustomCommands = require("../utils/CustomCommands");
 const AddProjectPage = require("../pageobjects/AddProjectPage");
@@ -9,7 +8,7 @@ const ApiUtility = require("../utils/ApiUtility");
 
 describe("Project sequence", () => {
   before(async () => {
-    await CustomCommands.pushImageToEmulator("project_logo.png");
+    await CustomCommands.pushImageToEmulator("small_image.jpg");
   });
 
   beforeEach(async () => {

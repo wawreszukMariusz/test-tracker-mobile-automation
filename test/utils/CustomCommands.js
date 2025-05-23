@@ -1,6 +1,5 @@
 const { $, driver } = require("@wdio/globals");
 const path = require("path");
-const { browser } = require("@wdio/globals");
 const fs = require("fs");
 
 class CustomCommands {
