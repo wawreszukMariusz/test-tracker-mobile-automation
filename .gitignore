@@ -1,3 +1,5 @@
 node_modules/
 .env
 app/
+allure-results/
+allure-report/
