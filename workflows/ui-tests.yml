@@ -1,0 +1,64 @@
+name: TestTracker UI Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  android-tests:
+    runs-on: ubuntu-latest
+    env:
+      ANDROID_SDK_ROOT: ${{ runner.tool_cache }}/android-sdk
+      ANDROID_API_LEVEL: 31
+      DEVICE_NAME: emulator-5554
+      EMULATOR_IMAGE: system-images;android-${{ env.ANDROID_API_LEVEL }};default;x86_64
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "11"
+
+      - name: Install Android SDK
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ env.ANDROID_API_LEVEL }}
+          arch: x86_64
+          target: default
+          force-avd-creation: true
+
+      - name: Start Android emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ env.ANDROID_API_LEVEL }}
+          arch: x86_64
+          target: default
+          emulator-options: -no-window -gpu off
+          force-avd-creation: false
+
+      - name: Wait for emulator
+        run: adb wait-for-device
+
+      - name: Unlock screen
+        run: |
+          adb shell input keyevent 82
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          # jeśli masz globalnie zainstalowany wdio, pomiń
+          npm install @wdio/cli
+
+      - name: Run Android UI tests
+        run: |
+          npx wdio run wdio.conf.js
+
+      - name: Stop emulator
+        if: always()
+        run: adb -s ${{ env.DEVICE_NAME }} emu kill

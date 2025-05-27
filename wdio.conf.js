@@ -23,7 +23,7 @@ exports.config = {
   // The path of the spec files will be resolved relative from the directory of
   // of the config file unless it's absolute.
   //
-  specs: ["./test/specs/*.js"],
+  specs: ["./test/specs/testcases/**/*.spec.js"],
   services: ["appium"],
   // Patterns to exclude.
   exclude: [
@@ -250,7 +250,7 @@ exports.config = {
     { error, result, duration, passed, retries }
   ) {
     if (error) {
-      await browser.takeScreenshot();
+      await driver.takeScreenshot();
     }
   },
 
