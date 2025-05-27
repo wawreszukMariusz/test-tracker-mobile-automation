@@ -1,11 +1,11 @@
-const HomePage = require("../pageobjects/HomePage");
-const LoginPage = require("../pageobjects/LoginPage");
-const ProjectPage = require("../pageobjects/ProjectPage");
-const CustomCommands = require("../utils/CustomCommands");
-const ScenarioPage = require("../pageobjects/ScenarioPage");
-const TestCasePage = require("../pageobjects/TestCasePage");
-const AddTestCasePage = require("../pageobjects/AddTestCasePage");
-const ApiUtility = require("../utils/ApiUtility");
+const HomePage = require("../../pageobjects/HomePage");
+const LoginPage = require("../../pageobjects/LoginPage");
+const ProjectPage = require("../../pageobjects/ProjectPage");
+const CustomCommands = require("../../utils/CustomCommands");
+const ScenarioPage = require("../../pageobjects/ScenarioPage");
+const TestCasePage = require("../../pageobjects/TestCasePage");
+const AddTestCasePage = require("../../pageobjects/AddTestCasePage");
+const ApiUtility = require("../../utils/ApiUtility");
 
 describe("Test case sequence", () => {
   beforeEach(async () => {
@@ -39,7 +39,7 @@ describe("Test case sequence", () => {
     await CustomCommands.reinstallApp();
   });
 
-  it.only("add test case with proper data", async () => {
+  it("add test case with proper data", async () => {
     await AddTestCasePage.input.setValue("Test");
     await AddTestCasePage.addTestCaseButton.click();
 

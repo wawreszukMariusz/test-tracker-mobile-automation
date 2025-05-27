@@ -1,10 +1,10 @@
-const HomePage = require("../pageobjects/HomePage");
-const LoginPage = require("../pageobjects/LoginPage");
-const ProjectPage = require("../pageobjects/ProjectPage");
-const CustomCommands = require("../utils/CustomCommands");
-const AddProjectPage = require("../pageobjects/AddProjectPage");
-const GalleryPage = require("../pageobjects/GalleryPage");
-const ApiUtility = require("../utils/ApiUtility");
+const HomePage = require("../../pageobjects/HomePage");
+const LoginPage = require("../../pageobjects/LoginPage");
+const ProjectPage = require("../../pageobjects/ProjectPage");
+const CustomCommands = require("../../utils/CustomCommands");
+const AddProjectPage = require("../../pageobjects/AddProjectPage");
+const GalleryPage = require("../../pageobjects/GalleryPage");
+const ApiUtility = require("../../utils/ApiUtility");
 
 describe("Project sequence", () => {
   before(async () => {

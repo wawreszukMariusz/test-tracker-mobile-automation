@@ -1,11 +1,11 @@
-const HomePage = require("../pageobjects/HomePage");
-const LoginPage = require("../pageobjects/LoginPage");
-const ProjectPage = require("../pageobjects/ProjectPage");
-const CustomCommands = require("../utils/CustomCommands");
-const StartExecutionPage = require("../pageobjects/StartExecutionPage");
-const ExecutionPage = require("../pageobjects/ExecutionPage");
-const ApiUtility = require("../utils/ApiUtility");
-const SingleReportPage = require("../pageobjects/SingleReportPage");
+const HomePage = require("../../pageobjects/HomePage");
+const LoginPage = require("../../pageobjects/LoginPage");
+const ProjectPage = require("../../pageobjects/ProjectPage");
+const CustomCommands = require("../../utils/CustomCommands");
+const StartExecutionPage = require("../../pageobjects/StartExecutionPage");
+const ExecutionPage = require("../../pageobjects/ExecutionPage");
+const ApiUtility = require("../../utils/ApiUtility");
+const SingleReportPage = require("../../pageobjects/SingleReportPage");
 
 describe("Test execution sequence", () => {
   beforeEach(async () => {

@@ -1,12 +1,12 @@
-const HomePage = require("../pageobjects/HomePage");
-const LoginPage = require("../pageobjects/LoginPage");
-const ProjectPage = require("../pageobjects/ProjectPage");
-const CustomCommands = require("../utils/CustomCommands");
-const ScenarioPage = require("../pageobjects/ScenarioPage");
-const TestCasePage = require("../pageobjects/TestCasePage");
-const TestStepPage = require("../pageobjects/TestStepPage");
-const AddTestStepPage = require("../pageobjects/AddTestStepPage");
-const ApiUtility = require("../utils/ApiUtility");
+const HomePage = require("../../pageobjects/HomePage");
+const LoginPage = require("../../pageobjects/LoginPage");
+const ProjectPage = require("../../pageobjects/ProjectPage");
+const CustomCommands = require("../../utils/CustomCommands");
+const ScenarioPage = require("../../pageobjects/ScenarioPage");
+const TestCasePage = require("../../pageobjects/TestCasePage");
+const TestStepPage = require("../../pageobjects/TestStepPage");
+const AddTestStepPage = require("../../pageobjects/AddTestStepPage");
+const ApiUtility = require("../../utils/ApiUtility");
 
 describe("Test step sequence", () => {
   beforeEach(async () => {
@@ -48,7 +48,7 @@ describe("Test step sequence", () => {
     await CustomCommands.reinstallApp();
   });
 
-  it.only("add single test step with proper data", async () => {
+  it("add single test step with proper data", async () => {
     await AddTestStepPage.expectedInput[0].setValue("Text Expected");
     await AddTestStepPage.resultInput[0].setValue("Test Result");
     await AddTestStepPage.addTestStepButton.click();

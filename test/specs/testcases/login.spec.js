@@ -1,7 +1,7 @@
-const HomePage = require("../pageobjects/HomePage");
-const LoginPage = require("../pageobjects/LoginPage");
-const RegisterPage = require("../pageobjects/RegisterPage");
-const CustomCommands = require("../utils/CustomCommands");
+const HomePage = require("../../pageobjects/HomePage");
+const LoginPage = require("../../pageobjects/LoginPage");
+const RegisterPage = require("../../pageobjects/RegisterPage");
+const CustomCommands = require("../../utils/CustomCommands");
 
 describe("Login sequence", () => {
   beforeEach(async () => {

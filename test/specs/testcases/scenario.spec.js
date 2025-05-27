@@ -1,10 +1,10 @@
-const HomePage = require("../pageobjects/HomePage");
-const LoginPage = require("../pageobjects/LoginPage");
-const ProjectPage = require("../pageobjects/ProjectPage");
-const CustomCommands = require("../utils/CustomCommands");
-const ScenarioPage = require("../pageobjects/ScenarioPage");
-const AddScenarioPage = require("../pageobjects/AddScenarioPage");
-const ApiUtility = require("../utils/ApiUtility");
+const HomePage = require("../../pageobjects/HomePage");
+const LoginPage = require("../../pageobjects/LoginPage");
+const ProjectPage = require("../../pageobjects/ProjectPage");
+const CustomCommands = require("../../utils/CustomCommands");
+const ScenarioPage = require("../../pageobjects/ScenarioPage");
+const AddScenarioPage = require("../../pageobjects/AddScenarioPage");
+const ApiUtility = require("../../utils/ApiUtility");
 
 describe("Scenario sequence", () => {
   beforeEach(async () => {
